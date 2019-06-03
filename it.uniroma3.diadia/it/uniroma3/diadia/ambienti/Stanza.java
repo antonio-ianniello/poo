@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -19,6 +20,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  * @version base
 */
 
+//fatto manca personaggio
 public class Stanza {
 	
 	private String nome;
@@ -26,7 +28,7 @@ public class Stanza {
     
     private Map<String,Stanza> stanzeAdiacenti;
   
-
+//manca personaggio degli homework seguenti
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -82,26 +84,18 @@ public class Stanza {
      * Restituisce la collezione di attrezzi presenti nella stanza.
      * @return la collezione di attrezzi nella stanza.
      */
-    public Attrezzo[] getAttrezzi() {
-        return this.attrezzi;
+    public List<Attrezzo> getAttrezzi(){
+    	return this.attrezzi;
     }
-
     /**
      * Mette un attrezzo nella stanza.
      * @param attrezzo l'attrezzo da mettere nella stanza.
      * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
      */
     public boolean addAttrezzo(Attrezzo attrezzo) {
-        if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
-        	this.attrezzi[numeroAttrezzi] = attrezzo;
-        	this.numeroAttrezzi++;
-        	return true;
-        }
-        else {
-        	return false;
-        }
+        return this.attrezzi.add(attrezzo);
     }
-
+    
    /**
 	* Restituisce una rappresentazione stringa di questa stanza,
 	* stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
@@ -111,13 +105,11 @@ public class Stanza {
     	StringBuilder risultato = new StringBuilder();
     	risultato.append(this.nome);
     	risultato.append("\nUscite: ");
-    	for (String direzione : this.direzioni)
-    		if (direzione!=null)
-    			risultato.append(" " + direzione);
+    	risultato.append(this.getDirezioni());
     	risultato.append("\nAttrezzi nella stanza: ");
     	for (Attrezzo attrezzo : this.attrezzi) {		//tolto il toSTring di this.attrezzi.toSTring(),il ciclo va fatto sull' array
     		if(attrezzo!= null)							//inserito altrimenti mi stampa tutto l'array,compreso i null
-    		risultato.append(attrezzo+"\n");
+    		risultato.append(attrezzo.toString()+"\n");
     	}
     	return risultato.toString();
     }
@@ -127,14 +119,13 @@ public class Stanza {
 	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
 	*/
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		boolean trovato;
-		trovato = false;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if(attrezzo!=null)
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
+		
+		for(Attrezzo a:this.attrezzi) {
+			if(a.getNome().equals(nomeAttrezzo)) {
+				return  true;
+			}
 		}
-		return trovato;
+		return false;
 	}
 
 	/**
@@ -144,10 +135,9 @@ public class Stanza {
      * 		   null se l'attrezzo non e' presente.
 	 */
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-		Attrezzo attrezzoCercato;
-		attrezzoCercato = null;
+		Attrezzo attrezzoCercato=null;
+	
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if(attrezzo!=null)
 			if (attrezzo.getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzo;
 		}
@@ -159,26 +149,25 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	public boolean removeAttrezzo(String attrezzo) {
+	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		
+     return this.attrezzi.remove(attrezzo);
 
-	for(int i = 0;i<this.numeroAttrezzi;i++) {
-		if(this.attrezzi[i]!=null)		//altrimenti nullPointException se vi sono elemetni vuoti
-		if(this.attrezzi[i].getNome().equals(attrezzo)) {
-			this.attrezzi[i]=null;
-			this.attrezzi[i]=this.attrezzi[i+1];
-			return true;
-		}
 	}
 	
-	return false;
+	public boolean isEmpty() {
+		return this.attrezzi.isEmpty();
 	}
 
-	public String[] getDirezioni() {
-		String[] direzioni = new String[this.numeroStanzeAdiacenti];
-	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-	    	direzioni[i] = this.direzioni[i];
-	    return direzioni;
-    }
+	public Set<String> getDirezioni() {
+		return this.stanzeAdiacenti.keySet();		//ma che figo riporta un set di tipo chiave della mappa
+	}
+	
+	public int getNumeroAttrezzi() {
+		return this.attrezzi.size();
+	}
+	
+	//manca abstactPersonaggio homewrok seguenti
+	//manca setPersonaggio homework sgeuenti
 
 }
