@@ -1,7 +1,10 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -18,15 +21,12 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Stanza {
 	
-	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
-	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
-	
 	private String nome;
     private List<Attrezzo> attrezzi;
     
-    private List<Stanza> stanzeAdiacenti;
+    private Map<String,Stanza> stanzeAdiacenti;
   
-	private List<String>direzioni;
+
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -34,10 +34,10 @@ public class Stanza {
      */
     public Stanza(String nome) {
         this.nome = nome;
-        
-       this.attrezzi = new LinkedList<Attrezzo>();
-       this.stanzeAdiacenti= new LinkedList<Stanza>();
-        this.direzioni = new LinkedList<String>();
+        this.nome=nome;
+        this.stanzeAdiacenti= new HashMap<>();
+        this.attrezzi = new ArrayList<>();
+    
      
     }
 
@@ -48,22 +48,10 @@ public class Stanza {
      * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
      */
     public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
-        boolean aggiornato = false;
-    	for(int i=0; i<this.direzioni.length; i++)
-        	if (direzione.equals(this.direzioni[i])) {
-        		this.stanzeAdiacenti[i] = stanza;
-        		aggiornato = true;
-        	}
-        		for(String direzione;direzioni) {
-        		}
-        		
-        	
-    	if (!aggiornato)
-    		if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
-    			this.direzioni[numeroStanzeAdiacenti] = direzione;
-    			this.stanzeAdiacenti[numeroStanzeAdiacenti] = stanza;
-    		    this.numeroStanzeAdiacenti++;
-    		}
+    
+    this.stanzeAdiacenti.put(direzione, stanza);
+    
+    
     }
 
     /**
@@ -71,11 +59,7 @@ public class Stanza {
      * @param direzione
      */
 	public Stanza getStanzaAdiacente(String direzione) {
-        Stanza stanza = null;
-		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-        	if (this.direzioni[i].equals(direzione))
-        		stanza = this.stanzeAdiacenti[i];
-        return stanza;
+     return this.stanzeAdiacenti.get(direzione);
 	}
 
     /**
