@@ -1,5 +1,8 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -19,10 +22,10 @@ public class Stanza {
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
 	private String nome;
-    private Attrezzo[] attrezzi;
-    private int numeroAttrezzi;
-    private Stanza[] stanzeAdiacenti;
-    private int numeroStanzeAdiacenti;
+    private List<Attrezzo> attrezzi;
+    
+    private List<Stanza> stanzeAdiacenti;
+  
 	private String[] direzioni;
     
     /**
@@ -31,11 +34,11 @@ public class Stanza {
      */
     public Stanza(String nome) {
         this.nome = nome;
-        this.numeroStanzeAdiacenti = 0;
-        this.numeroAttrezzi = 0;
+        
+       this.attrezzi = new LinkedList<Attrezzo>();
+       this.stanzeAdiacenti= new LinkedList<Stanza>();
         this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
-        this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
-        this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+     
     }
 
     /**

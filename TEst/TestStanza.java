@@ -48,9 +48,9 @@ public class TestStanza {
 		this.Bra.addAttrezzo(lancia);
 		this.Franco.addAttrezzo(ascia);
 
-		assertTrue(this.Bubu.removeAttrezzo(osso));
-		assertEquals(true,this.Bra.removeAttrezzo(lancia));
-		assertFalse(this.Franco.removeAttrezzo(osso));
+		assertTrue(this.Bubu.removeAttrezzo(osso.getNome()));
+		assertEquals(true,this.Bra.removeAttrezzo(lancia.getNome()));
+		assertFalse(this.Franco.removeAttrezzo(osso.getNome()));
 
 
 	}
