@@ -26,7 +26,7 @@ public class Stanza {
     
     private List<Stanza> stanzeAdiacenti;
   
-	private String[] direzioni;
+	private List<String>direzioni;
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -37,7 +37,7 @@ public class Stanza {
         
        this.attrezzi = new LinkedList<Attrezzo>();
        this.stanzeAdiacenti= new LinkedList<Stanza>();
-        this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
+        this.direzioni = new LinkedList<String>();
      
     }
 
@@ -54,6 +54,10 @@ public class Stanza {
         		this.stanzeAdiacenti[i] = stanza;
         		aggiornato = true;
         	}
+        		for(String direzione;direzioni) {
+        		}
+        		
+        	
     	if (!aggiornato)
     		if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
     			this.direzioni[numeroStanzeAdiacenti] = direzione;
