@@ -1,10 +1,8 @@
 package it.uniroma3.diadia;
-import java.util.Scanner;
-
-import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.comandi.Comando;
-
+import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
+import it.uniroma3.diadia.io.InterfacciaUtente;
+import it.uniroma3.diadia.io.InterfacciaUtenteCOnsole;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -29,13 +27,9 @@ public class Diadia {
 			"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
-	
-	
 
-	
-	
 	private Partita partita;
-    private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteConsole();
+    private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteCOnsole();
 
 	public Diadia() {
 		this.partita = new Partita();
@@ -85,4 +79,3 @@ public class Diadia {
 		gioco.gioca();
 	}
 }
-
