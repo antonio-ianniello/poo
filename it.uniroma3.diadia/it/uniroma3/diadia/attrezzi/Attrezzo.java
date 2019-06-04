@@ -52,5 +52,22 @@ public class Attrezzo {
 	public String toString() {
 		return this.getNome()+" ("+this.getPeso()+"kg)";
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode()+this.peso;
+	}
+	
+	public boolean equals(Object o) {
+		Attrezzo that =(Attrezzo) o;
+		return this.peso == that.getPeso() && this.nome.equals(that.getNome());
+	}
+	
+	public int compareTo(Attrezzo that) {
+		Integer thisPeso = this.peso;
+		Integer thatPeso = that.getPeso();
+		if(this.peso == that.getPeso()) return this.nome.compareTo(that.getNome());		//se vero confronta nome
+		else return thisPeso.compareTo(thatPeso);		//falso
+	}
 
 }

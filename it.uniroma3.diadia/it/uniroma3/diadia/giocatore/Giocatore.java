@@ -18,23 +18,8 @@ public class Giocatore {
 		this.cfu = CFU_INIZIALI;
 	}
 
-	//metodi
-	public void diminuisciCfu() {
-		this.setCfu(this.getCfu()-1);
-		
-	}
-	
-	public boolean aggiungiInBorsa(Attrezzo attrezzo) {
 
 
-	
-	if(this.borsa.addAttrezzo(attrezzo))
-		return true;
-	
-	
-	
-	return false;
-	}
 	
 	
 	//getters && setters
