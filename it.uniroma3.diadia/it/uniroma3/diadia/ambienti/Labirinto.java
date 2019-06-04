@@ -21,22 +21,26 @@ public class Labirinto {
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo pane = new Attrezzo("pane",5);
+		Attrezzo scudo = new Attrezzo("scudo",10);
+		Attrezzo chiave = new Attrezzo ("chiave",1);
+		Attrezzo carta = new Attrezzo ("carta", 2);
+		Attrezzo computer = new Attrezzo ("computer", 14);
+		Attrezzo libro1 = new Attrezzo("libro1",2);
+		Attrezzo libro2 = new Attrezzo("libro2",1);
 		
-		//aggiunti
-		Attrezzo tazzina = new Attrezzo("tazzina",1);
-		Attrezzo piatto = new Attrezzo("piatto",1);
-    	
+	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
 		Stanza aulaN11 = new Stanza("Aula N11");
 		Stanza aulaN10 = new Stanza("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
+		StanzaBuia bagno = new StanzaBuia("Bagno", "lanterna");
+		StanzaMagica adisu = new StanzaMagica("Adisu", 2);
+		StanzaBloccata rettorato = new StanzaBloccata("Rettorato","nord","chiave");
 		
-		//aggiunti
-		Stanza mensa = new Stanza("Mensa");
-		Stanza bar = new Stanza("Bar");
-		
+
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
 		atrio.impostaStanzaAdiacente("est", aulaN11);
@@ -47,21 +51,34 @@ public class Labirinto {
 		aulaN10.impostaStanzaAdiacente("nord", atrio);
 		aulaN10.impostaStanzaAdiacente("est", aulaN11);
 		aulaN10.impostaStanzaAdiacente("ovest", laboratorio);
+		aulaN10.impostaStanzaAdiacente("sud", bagno);
+		bagno.impostaStanzaAdiacente("nord", aulaN10);
+		bagno.impostaStanzaAdiacente("est", adisu);
+		adisu.impostaStanzaAdiacente("ovest", bagno);
+		adisu.impostaStanzaAdiacente("est", rettorato);
+
 		laboratorio.impostaStanzaAdiacente("est", atrio);
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
+		rettorato.impostaStanzaAdiacente("nord", biblioteca);
+		rettorato.impostaStanzaAdiacente("ovest", bagno);
 		
-		//aggiunti
-		bar.impostaStanzaAdiacente("nord", mensa);
-		mensa.impostaStanzaAdiacente("sud", bar);
-
+	
         /* pone gli attrezzi nelle stanze */
-		aulaN10.addAttrezzo(lanterna);
-		atrio.addAttrezzo(osso);
+		laboratorio.addAttrezzo(lanterna);
+		aulaN10.addAttrezzo(pane);
+		aulaN11.addAttrezzo(scudo);
+		bagno.addAttrezzo(carta);
+		aulaN11.addAttrezzo(chiave);
+		aulaN11.addAttrezzo(computer);
+		adisu.addAttrezzo(libro1);
+		adisu.addAttrezzo(libro2);
+		rettorato.addAttrezzo(libro1);
+		rettorato.addAttrezzo(libro2);
+		rettorato.addAttrezzo(computer);
+		rettorato.addAttrezzo(osso);
 		
-		//aggiunti
-		bar.addAttrezzo(tazzina);
-		mensa.addAttrezzo(piatto);
+		
 	
 		// il gioco comincia nell'atrio
         stanzaCorrente = atrio;  

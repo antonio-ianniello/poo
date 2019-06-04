@@ -2,31 +2,17 @@ package it.uniroma3.diadia.ambienti;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-/**
- * Classe Stanza - una stanza in un gioco di ruolo.
- * Una stanza e' un luogo fisico nel gioco.
- * E' collegata ad altre stanze attraverso delle uscite.
- * Ogni uscita e' associata ad una direzione.
- * 
- * @author docente di POO 
- * @see Attrezzo
- * @version base
-*/
-
-//fatto manca personaggio
-public class Stanza {
-	
-	private String nome;
-    private List<Attrezzo> attrezzi;
+public class StanzaProtected {
+	protected String nome;
+    protected List<Attrezzo> attrezzi;
     
-    private Map<String,Stanza> stanzeAdiacenti;
+    protected Map<String,Stanza> stanzeAdiacenti;
   
 //manca personaggio degli homework seguenti
     
@@ -34,7 +20,7 @@ public class Stanza {
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      * @param nome il nome della stanza
      */
-    public Stanza(String nome) {
+    public StanzaProtected(String nome) {
         this.nome = nome;
         this.nome=nome;
         this.stanzeAdiacenti= new HashMap<>();
@@ -170,4 +156,5 @@ public class Stanza {
 	//manca abstactPersonaggio homewrok seguenti
 	//manca setPersonaggio homework sgeuenti
 
+}
 }
