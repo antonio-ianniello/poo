@@ -17,7 +17,7 @@ public class Labirinto {
      * Crea tutte le stanze e le porte di collegamento
      */
     private void creaLabirinto() {
-
+    	
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
